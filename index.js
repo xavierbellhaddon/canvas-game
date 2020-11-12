@@ -78,7 +78,7 @@ const enemies = [];
 function spawnEnemies() {
     setInterval(() => {
         const x = Math.random() * canvas.width
-        const y = 100
+        const y = Math.random() * canvas.height
         const radius = 30
         const color = "green"
 
