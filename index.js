@@ -99,9 +99,6 @@ function spawnEnemies() {
     };
 
     enemies.push(new Enemy(x, y, radius, color, velocity));
-
-    console.log(enemies);
-    console.log("go");
   }, 1000);
 }
 
@@ -115,6 +112,12 @@ function animate() {
   });
   enemies.forEach((enemy) => {
     enemy.update();
+    projectiles.forEach(projectile => {
+        const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
+        if (dist - enemy.radius - projectile.radius < 1) {
+            console.log("Remove from screen")
+        }
+    })
   });
 }
 
@@ -132,7 +135,6 @@ addEventListener("click", (event) => {
   projectiles.push(
     new Projectile(canvas.width / 2, canvas.height / 2, 5, "red", velocity)
   );
-  console.log(projectiles);
 });
 
 animate();
