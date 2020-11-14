@@ -76,7 +76,7 @@ const enemies = [];
 
 function spawnEnemies() {
   setInterval(() => {
-    const radius = Math.random() * (30 - 4) + 4;
+    const radius = Math.random() * (30 - 7) + 7;
     let x;
     let y;
 
@@ -84,13 +84,12 @@ function spawnEnemies() {
       x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius;
       y = Math.random() * canvas.height;
     } else {
-        x = Math.random() * canvas.height;
-        y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
+      x = Math.random() * canvas.height;
+      y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius;
     }
 
-
     const color = "green";
-    
+
     const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x);
 
     const velocity = {
@@ -110,14 +109,17 @@ function animate() {
     projectile.draw();
     projectile.update();
   });
-  enemies.forEach((enemy) => {
+  enemies.forEach((enemy, index) => {
     enemy.update();
-    projectiles.forEach(projectile => {
-        const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y)
-        if (dist - enemy.radius - projectile.radius < 1) {
-            console.log("Remove from screen")
-        }
-    })
+    projectiles.forEach((projectile, projectileIndex) => {
+      const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y);
+      if (dist - enemy.radius - projectile.radius < 1) {
+        setTimeout(() => {
+          enemies.splice(index, 1);
+          projectiles.splice(projectileIndex, 1);
+        }, 0);
+      }
+    });
   });
 }
 
