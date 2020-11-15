@@ -4,6 +4,7 @@ const scoreEl = document.querySelector("#scoreEl");
 const startGameBtn = document.querySelector("#startGameBtn");
 const modalEl = document.querySelector("#modalEl");
 const bigScoreEl = document.querySelector("#bigScoreEl");
+let intervalId;
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
@@ -118,10 +119,11 @@ function init() {
   score = 0;
   scoreEl.innerHTML = score;
   bigScoreEl.innerHTML = score;
+  clearInterval(intervalId);
 }
 
 function spawnEnemies() {
-  setInterval(() => {
+  intervalId = setInterval(() => {
     const radius = Math.random() * (30 - 7) + 7;
     let x;
     let y;
@@ -154,7 +156,7 @@ function animate() {
   animationId = requestAnimationFrame(animate);
 
   // c.fillStyle = "rgba(0, 0, 0, 0.1)";
-  
+
   c.fillStyle = "black";
   c.fillRect(0, 0, canvas.width, canvas.height);
   player.draw();
