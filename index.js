@@ -150,7 +150,27 @@ function spawnEnemies() {
 }
 
 let animationId;
+let paused = false;
 let score = 0;
+
+onblur = windowBlur;
+onfocus = windowFocus;
+
+function windowBlur() {
+  if (!paused) {
+    paused = !paused;
+    clearInterval(intervalId);
+    cancelAnimationFrame(animationId);
+  }
+}
+
+function windowFocus() {
+  if (paused) {
+    paused = !paused;
+    animate();
+    spawnEnemies();
+  }
+}
 
 function animate() {
   animationId = requestAnimationFrame(animate);
