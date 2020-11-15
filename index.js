@@ -273,6 +273,6 @@ canvas.addEventListener("click", (event) => {
 startGameBtn.addEventListener("click", () => {
   init();
   animate();
-  // spawnEnemies();
+  spawnEnemies();
   modalEl.style.display = "none";
 });
