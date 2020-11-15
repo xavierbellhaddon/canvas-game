@@ -199,7 +199,6 @@ function animate() {
     ) {
       setTimeout(() => {
         projectiles.splice(index, 1);
-        projectiles.splice(index, 1);
       }, 0);
     }
   });
@@ -274,6 +273,6 @@ canvas.addEventListener("click", (event) => {
 startGameBtn.addEventListener("click", () => {
   init();
   animate();
-  spawnEnemies();
+  // spawnEnemies();
   modalEl.style.display = "none";
 });
