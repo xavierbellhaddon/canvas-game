@@ -152,6 +152,11 @@ function spawnEnemies() {
 let animationId;
 let paused = false;
 let score = 0;
+let highScore = 0;
+
+// function setHighScore() {
+
+// }
 
 onblur = windowBlur;
 onfocus = windowFocus;
@@ -212,6 +217,21 @@ function animate() {
       cancelAnimationFrame(animationId);
       bigScoreEl.innerHTML = score;
       modalEl.style.display = "flex";
+
+      if (highScore <= 0) {
+        highScore = score;
+        console.log(highScore)
+      } else if (highScore > score) {
+        console.log(highScore)
+        console.log("no new high score")
+        return
+      } else if (highScore < score) {
+        
+        highScore = score
+        console.log(highScore)
+        console.log("new high schore")
+      }
+
     }
 
     projectiles.forEach((projectile, projectileIndex) => {
