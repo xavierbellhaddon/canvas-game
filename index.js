@@ -172,8 +172,10 @@ function windowBlur() {
 function windowFocus() {
   if (paused) {
     paused = !paused;
-    animate();
-    spawnEnemies();
+    if (modalEl.style.display === "none") {
+      animate();
+      spawnEnemies();
+    }
   }
 }
 
