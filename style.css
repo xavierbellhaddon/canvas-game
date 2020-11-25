@@ -11,3 +11,14 @@ body {
   color: white;
   user-select: none;
 }
+
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
