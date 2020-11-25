@@ -1,4 +1,13 @@
 body {
-    margin: 0;
-    background: black;
+  margin: 0;
+  background: black;
+}
+
+.score {
+  position: fixed;
+  margin-left: 1em;
+  margin-top: 0.5em;   
+  font-size: small;
+  color: white;
+  user-select: none;
 }
