@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 const scoreEl = document.querySelector("#scoreEl");
-const startButton = document.querySelector("#startButton");
+const startButtonEl = document.querySelector("#startButtonEl");
 const modalEl = document.querySelector("#modalEl");
 const modalScoreEl = document.querySelector("#modalScoreEl");
 let intervalId;
@@ -106,7 +106,7 @@ class Particle {
 const x = canvas.width / 2;
 const y = canvas.height / 2;
 
-const player = new Player(x, y, 10, "white");
+let player = new Player(x, y, 10, "white");
 
 let projectiles = [];
 let enemies = [];
