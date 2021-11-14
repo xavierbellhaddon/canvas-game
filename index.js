@@ -1,9 +1,9 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 const scoreEl = document.querySelector("#scoreEl");
-const startGameBtn = document.querySelector("#startGameBtn");
+const startButton = document.querySelector("#startButton");
 const modalEl = document.querySelector("#modalEl");
-const bigScoreEl = document.querySelector("#bigScoreEl");
+const modalScoreEl = document.querySelector("#modalScoreEl");
 let intervalId;
 
 canvas.width = innerWidth;
@@ -118,7 +118,7 @@ function init() {
   particles = [];
   score = 0;
   scoreEl.innerHTML = score;
-  bigScoreEl.innerHTML = score;
+  modalScoreEl.innerHTML = score;
   clearInterval(intervalId);
 }
 
@@ -215,7 +215,7 @@ function animate() {
 
     if (dist - enemy.radius - player.radius < 1) {
       cancelAnimationFrame(animationId);
-      bigScoreEl.innerHTML = score;
+      modalScoreEl.innerHTML = score;
       modalEl.style.display = "flex";
 
       if (highScore <= 0) {
@@ -290,7 +290,7 @@ canvas.addEventListener("click", (event) => {
   );
 });
 
-startGameBtn.addEventListener("click", () => {
+startButtonEl.addEventListener("click", () => {
   init();
   animate();
   spawnEnemies();

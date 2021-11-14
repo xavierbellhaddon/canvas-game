@@ -6,19 +6,52 @@ body {
 .score {
   position: fixed;
   margin-left: 1em;
-  margin-top: 0.5em;   
+  margin-top: 0.5em;
   font-size: small;
   color: white;
   user-select: none;
 }
 
 .modal {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.modal-content {
+  background-color: white;
+  max-width: 28rem;
+  width: 100%;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.modal-content p {
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.modal-content p, .start-button {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.modal-score {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.start-button {
+  color: white;
+  width: 100%;
+  padding: 0.75rem 0 0.75rem 0;
+  border-radius: 9999px;
+  background-color: rgba(59, 130, 246);
 }
