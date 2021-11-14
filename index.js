@@ -9,7 +9,7 @@ let intervalId;
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
-console.log(innerHeight, innerWidth)
+console.log(innerHeight, innerWidth);
 
 class Player {
   constructor(x, y, radius, color) {
@@ -128,28 +128,28 @@ function init() {
 
 function spawnEnemies() {
   // intervalId = setInterval(() => {
-    const radius = Math.random() * (30 - 7) + 7;
-    let x;
-    let y;
+  const radius = Math.random() * (30 - 7) + 7;
+  let x;
+  let y;
 
-    if (Math.random() < 0.5) {
-      x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius;
-      y = Math.random() * canvas.height;
-    } else {
-      x = Math.random() * canvas.height;
-      y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius;
-    }
+  if (Math.random() < 0.5) {
+    x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius;
+    y = Math.random() * canvas.height;
+  } else {
+    x = Math.random() * canvas.height;
+    y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius;
+  }
 
-    const color = `hsl(${Math.random() * 360}, 50%, 50%)`;
+  const color = `hsl(${Math.random() * 360}, 50%, 50%)`;
 
-    const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x);
+  const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x);
 
-    const velocity = {
-      x: Math.cos(angle),
-      y: Math.sin(angle),
-    };
+  const velocity = {
+    x: Math.cos(angle),
+    y: Math.sin(angle),
+  };
 
-    enemies.push(new Enemy(x, y, radius, color, velocity));
+  enemies.push(new Enemy(x, y, radius, color, velocity));
   // }, 1000);
 }
 
@@ -188,12 +188,11 @@ function animate() {
   animationId = requestAnimationFrame(animate);
   c.fillStyle = "black";
   c.fillRect(0, 0, canvas.width, canvas.height);
-  frame++ 
+  frame++;
 
   if (frame % 70 === 0) {
     spawnEnemies();
   }
-
 
   player.draw();
   particles.forEach((particle, index) => {
@@ -231,18 +230,16 @@ function animate() {
 
       if (highScore <= 0) {
         highScore = score;
-        console.log(highScore)
+        console.log(highScore);
       } else if (highScore > score) {
-        console.log(highScore)
-        console.log("no new high score")
-        return
+        console.log(highScore);
+        console.log("no new high score");
+        return;
       } else if (highScore < score) {
-        
-        highScore = score
-        console.log(highScore)
-        console.log("New high score!")
+        highScore = score;
+        console.log(highScore);
+        console.log("New high score!");
       }
-
     }
 
     projectiles.forEach((projectile, projectileIndex) => {
@@ -304,9 +301,9 @@ canvas.addEventListener("click", (event) => {
 addEventListener("resize", () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
-  init()
-  player.draw()
-})
+  init();
+  player.draw();
+});
 
 startButtonEl.addEventListener("click", () => {
   init();

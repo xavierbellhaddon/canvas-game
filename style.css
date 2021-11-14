@@ -9,6 +9,7 @@ html, body {
 body {
   margin: 0;
   background: black;
+  overflow: hidden;
 }
 
 .score {
