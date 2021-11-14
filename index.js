@@ -9,6 +9,8 @@ let intervalId;
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
+console.log(innerHeight, innerWidth)
+
 class Player {
   constructor(x, y, radius, color) {
     this.x = x;
@@ -121,14 +123,11 @@ function init() {
   projectiles = [];
   enemies = [];
   particles = [];
-  // score = 0;
-  // scoreEl.innerHTML = score;
-  // modalScoreEl.innerHTML = score;
   clearInterval(intervalId);
 }
 
 function spawnEnemies() {
-  intervalId = setInterval(() => {
+  // intervalId = setInterval(() => {
     const radius = Math.random() * (30 - 7) + 7;
     let x;
     let y;
@@ -151,17 +150,8 @@ function spawnEnemies() {
     };
 
     enemies.push(new Enemy(x, y, radius, color, velocity));
-  }, 1000);
+  // }, 1000);
 }
-
-let animationId;
-let paused = false;
-let score = 0;
-let highScore = 0;
-
-// function setHighScore() {
-
-// }
 
 onblur = windowBlur;
 onfocus = windowFocus;
@@ -184,11 +174,27 @@ function windowFocus() {
   }
 }
 
+let animationId;
+let paused = false;
+let score = 0;
+let frame = 0;
+let highScore = 0;
+
+// function setHighScore() {
+
+// }
+
 function animate() {
   animationId = requestAnimationFrame(animate);
-
   c.fillStyle = "black";
   c.fillRect(0, 0, canvas.width, canvas.height);
+  frame++ 
+
+  if (frame % 70 === 0) {
+    spawnEnemies();
+  }
+
+
   player.draw();
   particles.forEach((particle, index) => {
     if (particle.alpha <= 0) {
@@ -299,13 +305,12 @@ addEventListener("resize", () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
   init()
-  spawnEnemies();
+  player.draw()
 })
 
 startButtonEl.addEventListener("click", () => {
   init();
   resetScore();
   animate();
-  spawnEnemies();
   modalEl.style.display = "none";
 });
