@@ -103,22 +103,27 @@ class Particle {
   }
 }
 
-const x = canvas.width / 2;
-const y = canvas.height / 2;
-
-let player = new Player(x, y, 10, "white");
-
+let player;
 let projectiles = [];
 let enemies = [];
 let particles = [];
 
-function init() {
-  projectiles = [];
-  enemies = [];
-  particles = [];
+function resetScore() {
   score = 0;
   scoreEl.innerHTML = score;
   modalScoreEl.innerHTML = score;
+}
+
+function init() {
+  const x = canvas.width / 2;
+  const y = canvas.height / 2;
+  player = new Player(x, y, 10, "white");
+  projectiles = [];
+  enemies = [];
+  particles = [];
+  // score = 0;
+  // scoreEl.innerHTML = score;
+  // modalScoreEl.innerHTML = score;
   clearInterval(intervalId);
 }
 
@@ -229,7 +234,7 @@ function animate() {
         
         highScore = score
         console.log(highScore)
-        console.log("new high schore")
+        console.log("New high score!")
       }
 
     }
@@ -290,8 +295,16 @@ canvas.addEventListener("click", (event) => {
   );
 });
 
+addEventListener("resize", () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+  init()
+  spawnEnemies();
+})
+
 startButtonEl.addEventListener("click", () => {
   init();
+  resetScore();
   animate();
   spawnEnemies();
   modalEl.style.display = "none";
