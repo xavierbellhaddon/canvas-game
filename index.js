@@ -127,7 +127,6 @@ function init() {
 }
 
 function spawnEnemies() {
-  // intervalId = setInterval(() => {
   const radius = Math.random() * (30 - 7) + 7;
   let x;
   let y;
@@ -150,11 +149,10 @@ function spawnEnemies() {
   };
 
   enemies.push(new Enemy(x, y, radius, color, velocity));
-  // }, 1000);
 }
 
-onblur = windowBlur;
-onfocus = windowFocus;
+// onblur = windowBlur;
+// onfocus = windowFocus;
 
 function windowBlur() {
   if (!paused) {
@@ -210,7 +208,7 @@ function animate() {
       projectile.x + projectile.radius < 0 ||
       projectile.x - projectile.radius > canvas.width ||
       projectile.y + projectile.radius < 0 ||
-      projectile.y - projectile.radius > canvas.width
+      projectile.y - projectile.radius > canvas.height
     ) {
       setTimeout(() => {
         projectiles.splice(index, 1);
@@ -302,7 +300,6 @@ addEventListener("resize", () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
   init();
-  player.draw();
 });
 
 startButtonEl.addEventListener("click", () => {
